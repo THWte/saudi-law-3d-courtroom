@@ -1,0 +1,32 @@
+{
+  "name": "saudi-law-3d-courtroom",
+  "version": "1.0.0",
+  "description": "Platform قضائية ذكية سعودية مع محاكاة 3D وذكاء اصطناعي",
+  "main": "app.py",
+  "scripts": {
+    "start": "python app.py",
+    "dev": "python app.py --debug",
+    "test": "pytest tests/",
+    "build": "npm run build:frontend",
+    "build:frontend": "echo 'Building frontend...'"
+  },
+  "keywords": [
+    "legal",
+    "saudi",
+    "3d",
+    "ai",
+    "courtroom",
+    "arabic"
+  ],
+  "author": "Saudi Legal AI",
+  "license": "MIT",
+  "dependencies": {
+    "three.js": "^r128",
+    "axios": "^1.4.0",
+    "chart.js": "^4.3.0"
+  },
+  "devDependencies": {
+    "pytest": "^7.0.0",
+    "flask": "^2.3.0"
+  }
+}

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم | قضاء السعودية</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>⚖️ قضاء السعودية</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-page="overview">📊 نظرة عامة</a>
+                <a href="#" class="nav-item" data-page="new-case">📝 قضية جديدة</a>
+                <a href="#" class="nav-item" data-page="courtroom">🏛️ قاعة المحكمة</a>
+                <a href="#" class="nav-item" data-page="analysis">🔍 التحليل الذكي</a>
+                <a href="#" class="nav-item" data-page="strategy">📋 الاستراتيجية</a>
+                <a href="#" class="nav-item" data-page="training">🎓 التدريب</a>
+                <a href="#" class="nav-item" data-page="reports">📈 التقارير</a>
+                <a href="#" class="nav-item" data-page="settings">⚙️ الإعدادات</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="search-box">
+                    <input type="text" placeholder="ابحث عن قضية...">
+                    <button>🔍</button>
+                </div>
+                <div class="user-section">
+                    <span class="user-name">مستخدم</span>
+                    <img src="https://via.placeholder.com/40" alt="المستخدم" class="user-avatar">
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <section class="content">
+                <!-- Overview Page -->
+                <div id="overview-page" class="page active">
+                    <h1>نظرة عامة على المنصة</h1>
+                    
+                    <!-- Statistics Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">📂</div>
+                            <div class="stat-content">
+                                <h3>إجمالي القضايا</h3>
+                                <p class="stat-number">1,842</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-content">
+                                <h3>قضايا مغلقة</h3>
+                                <p class="stat-number">1,256</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⏳</div>
+                            <div class="stat-content">
+                                <h3>قيد الدراسة</h3>
+                                <p class="stat-number">586</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📈</div>
+                            <div class="stat-content">
+                                <h3>معدل النجاح</h3>
+                                <p class="stat-number">94%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Modes Selection -->
+                    <div class="ai-modes-section">
+                        <h2>أوضاع الذكاء الاصطناعي</h2>
+                        <div class="modes-grid">
+                            <div class="mode-card" data-mode="full-ai">
+                                <div class="mode-icon">🤖</div>
+                                <h3>ذكاء كامل</h3>
+                                <p>النظام يقرر بالكامل دون تدخل المستخدم</p>
+                                <button class="mode-btn">اختر هذا الوضع</button>
+                            </div>
+                            <div class="mode-card" data-mode="ai-assisted">
+                                <div class="mode-icon">🤝</div>
+                                <h3>مساعدة ذكية</h3>
+                                <p>النظام يقترح والمستخدم يختار</p>
+                                <button class="mode-btn active">الوضع الحالي</button>
+                            </div>
+                            <div class="mode-card" data-mode="user-only">
+                                <div class="mode-icon">👤</div>
+                                <h3>المستخدم فقط</h3>
+                                <p>عرض المعلومات بدون قرارات تلقائية</p>
+                                <button class="mode-btn">اختر هذا الوضع</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Cases -->
+                    <div class="recent-cases">
+                        <h2>آخر القضايا</h2>
+                        <table class="cases-table">
+                            <thead>
+                                <tr>
+                                    <th>رقم القضية</th>
+                                    <th>النوع</th>
+                                    <th>الحالة</th>
+                                    <th>تاريخ الإنشاء</th>
+                                    <th>الإجراء</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#2024-001</td>
+                                    <td>مدنية</td>
+                                    <td><span class="status active">قيد الدراسة</span></td>
+                                    <td>2024-01-15</td>
+                                    <td><button class="action-btn">عرض</button></td>
+                                </tr>
+                                <tr>
+                                    <td>#2024-002</td>
+                                    <td>جزائية</td>
+                                    <td><span class="status completed">مغلقة</span></td>
+                                    <td>2024-01-10</td>
+                                    <td><button class="action-btn">عرض</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- New Case Page -->
+                <div id="new-case-page" class="page">
+                    <h1>إنشاء قضية جديدة</h1>
+                    <form class="case-form" id="new-case-form">
+                        <!-- Input Mode Selection -->
+                        <div class="form-section">
+                            <h3>طريقة الإدخال</h3>
+                            <div class="input-methods">
+                                <label class="method-option">
+                                    <input type="radio" name="input-method" value="text" checked>
+                                    📝 نص
+                                </label>
+                                <label class="method-option">
+                                    <input type="radio" name="input-method" value="voice">
+                                    🎤 صوت
+                                </label>
+                                <label class="method-option">
+                                    <input type="radio" name="input-method" value="file">
+                                    📄 ملف
+                                </label>
+                                <label class="method-option">
+                                    <input type="radio" name="input-method" value="form">
+                                    📋 نموذج
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Text Input -->
+                        <div class="form-section">
+                            <label>وصف القضية</label>
+                            <textarea id="case-description" placeholder="أدخل تفاصيل القضية..."></textarea>
+                        </div>
+
+                        <!-- File Upload -->
+                        <div class="form-section">
+                            <label>ارفع المستندات</label>
+                            <div class="file-upload">
+                                <input type="file" id="case-files" multiple accept=".pdf,.doc,.docx,.xlsx,.jpg,.png">
+                                <p>اسحب الملفات هنا أو انقر للاختيار</p>
+                            </div>
+                        </div>
+
+                        <!-- Form Fields -->
+                        <div class="form-section">
+                            <h3>بيانات الأطراف</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>اسم المدعي</label>
+                                    <input type="text" id="plaintiff-name" placeholder="اسم المدعي">
+                                </div>
+                                <div class="form-group">
+                                    <label>اسم المدعى عليه</label>
+                                    <input type="text" id="defendant-name" placeholder="اسم المدعى عليه">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Case Type Selection -->
+                        <div class="form-section">
+                            <label>نوع القضية</label>
+                            <select id="case-type">
+                                <option value="">اختر نوع القضية</option>
+                                <option value="civil">قضية مدنية</option>
+                                <option value="criminal">قضية جزائية</option>
+                                <option value="commercial">قضية تجارية</option>
+                                <option value="labor">قضية عمل</option>
+                                <option value="administrative">قضية إدارية</option>
+                                <option value="family">أحوال شخصية</option>
+                            </select>
+                        </div>
+
+                        <!-- Checkboxes -->
+                        <div class="form-section">
+                            <h3>معلومات إضافية</h3>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="has-evidence">
+                                يوجد أدلة
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="has-witnesses">
+                                يوجد شهود
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="urgent">
+                                حالة عاجلة
+                            </label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">تحليل القضية</button>
+                    </form>
+                </div>
+
+                <!-- Analysis Results Page -->
+                <div id="analysis-page" class="page">
+                    <h1>التحليل الذكي</h1>
+                    <div id="analysis-results" class="analysis-results">
+                        <!-- Results will be loaded here via JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Strategy Page -->
+                <div id="strategy-page" class="page">
+                    <h1>الاستراتيجية القانونية</h1>
+                    <div id="strategy-results" class="strategy-results">
+                        <!-- Strategy will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Courtroom Page -->
+                <div id="courtroom-page" class="page">
+                    <h1>محاكاة قاعة المحكمة</h1>
+                    <div id="courtroom-container" class="courtroom-3d">
+                        <!-- 3D Scene will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Training Page -->
+                <div id="training-page" class="page">
+                    <h1>نماذج التدريب</h1>
+                    <div class="training-scenarios">
+                        <div class="scenario-card">
+                            <h3>سيناريو 1: قضية مدنية</h3>
+                            <p>محاكاة لقضية نزاع تجاري</p>
+                            <button class="scenario-btn">ابدأ التدريب</button>
+                        </div>
+                        <div class="scenario-card">
+                            <h3>سيناريو 2: قضية جزائية</h3>
+                            <p>محاكاة لقضية جزائية</p>
+                            <button class="scenario-btn">ابدأ التدريب</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../backend/api/client.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
