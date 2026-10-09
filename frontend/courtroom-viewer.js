@@ -1,6 +1,7 @@
-import * as THREE from 'https://esm.sh/three@0.160.1';
-import {OrbitControls} from 'https://esm.sh/three@0.160.1/addons/controls/OrbitControls.js';
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {CharacterPipeline} from './human-character-pipeline.js';
+import {attachCourtEvents} from './courtroom-event-bridge.js';
 const host=document.getElementById('viewport'),status=document.getElementById('status'),role=document.getElementById('role'),animations=document.getElementById('animation');
 const scene=new THREE.Scene();scene.background=new THREE.Color('#273747');
 const camera=new THREE.PerspectiveCamera(55,1,.1,100);camera.position.set(5,4,7);
@@ -11,6 +12,9 @@ const floor=new THREE.Mesh(new THREE.PlaneGeometry(16,14),new THREE.MeshStandard
 function bench(x,z,w){const m=new THREE.Mesh(new THREE.BoxGeometry(w,1,1),new THREE.MeshStandardMaterial({color:0x69492f}));m.position.set(x,.5,z);scene.add(m);}
 bench(0,-4.3,5);bench(-3,2.5,2);bench(3,2.5,2);
 const pipeline=new CharacterPipeline(scene);
+attachCourtEvents(pipeline);
+for(const action of ['stand','sit','speak','listen'])document.getElementById(action).onclick=()=>{const ok=pipeline.perform(role.value,action);status.textContent=ok?'تم تشغيل '+action:'لا توجد حركة '+action+' في النموذج المستورد';};
+document.getElementById('apply-expression').onclick=()=>{const name=document.getElementById('expression').value.trim();status.textContent=pipeline.setExpression(role.value,name,1)?'تم تطبيق التعبير':'التعبير غير موجود في النموذج';};
 document.getElementById('model').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;status.textContent='جارٍ التحقق من النموذج...';try{const info=await pipeline.loadFile(role.value,file);animations.replaceChildren(new Option('اختر حركة',''));for(const name of pipeline.characters.get(role.value).animations.keys())animations.add(new Option(name,name));status.textContent='تم تحميل النموذج محليًا. '+JSON.stringify(info)+'\n'+(info.rigged?'عظام وتحريك هيكلي متاحان':'النموذج لا يحتوي هيكلًا عظميًا مكتملًا');}catch(err){status.textContent='فشل التحميل: '+err.message;}});
 document.getElementById('play').onclick=()=>{status.textContent=pipeline.play(role.value,animations.value)?'الحركة تعمل':'الحركة غير متاحة لهذا النموذج';};
 function resize(){const w=host.clientWidth,h=host.clientHeight||600;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();}new ResizeObserver(resize).observe(host);resize();
