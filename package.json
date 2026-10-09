@@ -29,5 +29,6 @@
   "devDependencies": {
     "pytest": "^7.0.0",
     "flask": "^2.3.0"
-  }
+  },
+  "type": "module"
 }
