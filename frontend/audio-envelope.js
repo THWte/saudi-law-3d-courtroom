@@ -1,5 +1,5 @@
 // Local-only audio envelope -> generic mouthOpen morph. Not phoneme/viseme recognition.
-export function envelopeToCues(samples,sampleRate,{morph='mouthOpen',fps=15,gain=8}={}){
+export function envelopeToCues(samples,sampleRate,{morph='mouthOpen',fps=10,gain=8}={}){
   if(!(samples instanceof Float32Array)||!Number.isFinite(sampleRate)||sampleRate<=0||samples.length>sampleRate*180||!Number.isFinite(fps)||fps<1||fps>60)throw new Error('Invalid audio envelope input');
   if(!/^[a-zA-Z0-9_-]{1,64}$/.test(morph))throw new Error('Invalid morph name');
   const stride=Math.max(1,Math.round(sampleRate/fps)),cues=[];
