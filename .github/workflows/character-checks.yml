@@ -1,0 +1,28 @@
+name: Courtroom character checks
+on:
+  pull_request:
+    paths:
+      - 'frontend/courtroom-*'
+      - 'frontend/human-character-pipeline.js'
+      - 'tests/character-events.test.mjs'
+      - 'package.json'
+      - '.github/workflows/character-checks.yml'
+  push:
+    branches: [feature/human-glb-pipeline-v1]
+jobs:
+  event-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JavaScript syntax
+        run: |
+          node --check frontend/human-character-pipeline.js
+          node --check frontend/courtroom-viewer.js
+          node --check frontend/courtroom-event-bridge.js
+      - name: Run event tests
+        run: npm run test:characters
