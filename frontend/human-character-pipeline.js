@@ -1,6 +1,7 @@
 // Browser-only GLB character pipeline. No remote asset uploads.
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import {validateGlbBuffer} from './glb-validation.js';
 export const ROLES = Object.freeze({judge:[0,0,-3],prosecutor:[-2,0,0],defense:[2,0,0],witness:[0,0,1.5]});
 export function validateCharacter(gltf) {
   if (!gltf?.scene) throw new Error('GLB scene missing');
@@ -15,7 +16,7 @@ export class CharacterPipeline {
     if(!(role in ROLES))throw new Error('Unknown role');
     if(!file || !/\.glb$/i.test(file.name) || file.size>50*1024*1024)throw new Error('Only GLB files up to 50 MB');
     const bytes=await file.arrayBuffer();
-    if(bytes.byteLength<12||new DataView(bytes).getUint32(0,true)!==0x46546c67)throw new Error('Invalid GLB header');
+    validateGlbBuffer(bytes);
     const gltf=await new Promise((resolve,reject)=>this.loader.parse(bytes,'',resolve,reject));
     const info=validateCharacter(gltf);
 
