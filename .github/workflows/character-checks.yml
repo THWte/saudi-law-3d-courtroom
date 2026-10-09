@@ -4,7 +4,9 @@ on:
     paths:
       - 'frontend/courtroom-*'
       - 'frontend/human-character-pipeline.js'
-      - 'tests/character-events.test.mjs'
+      - 'frontend/audio-envelope.js'
+      - 'frontend/speech-cues.js'
+      - 'tests/*.test.mjs'
       - 'package.json'
       - '.github/workflows/character-checks.yml'
   push:
@@ -24,5 +26,7 @@ jobs:
           node --check frontend/human-character-pipeline.js
           node --check frontend/courtroom-viewer.js
           node --check frontend/courtroom-event-bridge.js
+          node --check frontend/audio-envelope.js
+          node --check frontend/speech-cues.js
       - name: Run event tests
         run: npm run test:characters
