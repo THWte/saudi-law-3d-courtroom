@@ -1,6 +1,6 @@
 // Browser-only GLB character pipeline. No remote asset uploads.
-import * as THREE from 'https://esm.sh/three@0.160.1';
-import { GLTFLoader } from 'https://esm.sh/three@0.160.1/addons/loaders/GLTFLoader.js';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 export const ROLES = Object.freeze({judge:[0,0,-3],prosecutor:[-2,0,0],defense:[2,0,0],witness:[0,0,1.5]});
 export function validateCharacter(gltf) {
   if (!gltf?.scene) throw new Error('GLB scene missing');
