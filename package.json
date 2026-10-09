@@ -9,7 +9,7 @@
     "test": "pytest tests/",
     "build": "npm run build:frontend",
     "build:frontend": "echo 'Building frontend...'",
-    "test:characters": "node --test tests/character-events.test.mjs tests/speech-cues.test.mjs tests/audio-envelope.test.mjs"
+    "test:characters": "node --test tests/*.test.mjs"
   },
   "keywords": [
     "legal",
